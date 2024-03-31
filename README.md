@@ -39,10 +39,10 @@ services:
       - traefik
     labels:
       traefik.enable: "true"
-      traefik.http.routers.cargo.tls: "true"
-      traefik.http.routers.cargo.rule: "HostRegexp(`myapp.localhost`, `{subdomain:.+}.myapp.localhost`)"
-      traefik.http.routers.cargo.entrypoints: websecure
-      traefik.http.services.cargo.loadbalancer.server.port: 80
+      traefik.http.routers.myapp.tls: "true"
+      traefik.http.routers.myapp.rule: "HostRegexp(`myapp.localhost`, `{subdomain:.+}.myapp.localhost`)"
+      traefik.http.routers.myapp.entrypoints: websecure
+      traefik.http.services.myapp.loadbalancer.server.port: 80
 
 networks:
   traefik:
@@ -52,7 +52,3 @@ networks:
 ## Документация
 
 https://doc.traefik.io/traefik/
-
-## Todo
-
-- [ ] Пример конфигурации для postgresql.

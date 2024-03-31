@@ -16,12 +16,12 @@ for key in *-key.pem ; do
     fi  
     
     if openssl x509 -checkend $WEEK -noout -in ${cert} > /dev/null 2>&1 ; then
-        until=$(date --date="$(openssl x509 -enddate -noout -in "${cert}"|cut -d= -f 2)" --iso-8601)
-        echo "${host} valid until ${until}"
+        until=$(openssl x509 -enddate -noout -in "${cert}"|cut -d= -f 2)
+        echo "${host} valid until `${until}`"
     else
         echo "refresh ceritificate for ${host}"
         mkcert "${host}"
     fi
 done
 
-cd - > null 2>&1
+cd - > /dev/null 2>&1
